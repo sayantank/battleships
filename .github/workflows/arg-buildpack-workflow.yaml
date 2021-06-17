@@ -60,7 +60,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Configure art
         run: |
-          chmod +x ./art
+          sudo chmod +x ./art
           sudo mv ./art /usr/local/bin/art
           sudo art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
       - name: Deploy app
