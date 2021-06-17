@@ -51,16 +51,17 @@ jobs:
     steps:
       - name: Fetch repo
         uses: actions/checkout@v2
-      - name: Install art
+      - name: Download art
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           repo: "argonautdev/charts"
           version: "tags/v0.2.0"
           file: "art"
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Echo
-        run: ls -l
       - name: Configure art
-        run: ./art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
+        run: |
+          chmod +x ./art
+          sudo mv ./art /usr/local/bin/art
+          sudo art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
       - name: Deploy app
-        run: ./art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
+        run: sudo art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
