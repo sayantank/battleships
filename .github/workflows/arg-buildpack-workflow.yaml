@@ -59,8 +59,8 @@ jobs:
           file: "art"
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Echo
-        run: ls
+        run: ls -l
       - name: Configure art
-        run: sudo ./art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
+        run: ./art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
       - name: Deploy app
-        run: sudo ./art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
+        run: ./art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
