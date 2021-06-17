@@ -54,6 +54,8 @@ jobs:
       - name: Get Short SHA
         id: get_sha
         run: echo ::set-output name=SHA_SHORT::$(git rev-parse --short HEAD)
+      - name: Cat
+        run: cat ./.art/art.yaml
       - name: Download art
         uses: dsaltares/fetch-gh-release-asset@master
         with:
