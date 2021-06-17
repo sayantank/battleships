@@ -51,6 +51,8 @@ jobs:
     steps:
       - name: Fetch repo
         uses: actions/checkout@v2
+      - name: Get dependencies
+        run: sudo apt install -y libc6 libc-bin
       - name: Download art
         uses: dsaltares/fetch-gh-release-asset@master
         with:
