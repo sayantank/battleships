@@ -59,7 +59,7 @@ jobs:
           file: "art"
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Echo
-        run: ls | echo
+        run: ls
       - name: Configure art
         run: sudo ./art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
       - name: Deploy app
