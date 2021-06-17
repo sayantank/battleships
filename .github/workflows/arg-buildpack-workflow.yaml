@@ -65,10 +65,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Fake .env
         run: touch .env
-      - name: Configure art
+      - name: Configure art and Deploy app
         run: |
           sudo chmod +x ./art
           sudo mv ./art /usr/local/bin/art
           sudo art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
-      - name: Deploy app
-        run: sudo art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
+          sudo art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
