@@ -28,5 +28,5 @@ jobs:
           chmod +x ./art
           sudo mv ./art /usr/local/bin/art
           art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
-          cat ./.argonaut/config.yaml
+          cat ~/.argonaut/config.yaml
           art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="06aa88e"
