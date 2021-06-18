@@ -23,8 +23,6 @@ jobs:
         run: cat ./.art/art.yaml
       - name: Download art
         run: curl https://github.com/argonautdev/charts/releases/download/v0.2.0/art -L -o art
-      - name: Fake .env
-        run: touch .env
       - name: Configure art and Deploy app
         run: |
           chmod +x ./art
