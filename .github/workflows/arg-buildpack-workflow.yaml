@@ -67,7 +67,7 @@ jobs:
         run: touch .env
       - name: Configure art and Deploy app
         run: |
-          sudo chmod +x ./art
-          sudo mv ./art /usr/local/bin/art
-          sudo art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
-          sudo art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
+          chmod +x ./art
+          mv ./art /usr/local/bin/art
+          art configure --key {{ secrets.ART_KEY }} --secret {{ secrets.ART_SECRET }}
+          art app deploy -f ./.art/art.yaml --set image="registry.hub.docker.com/sayantank/test-e2e" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"
