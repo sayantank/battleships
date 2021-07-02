@@ -12,7 +12,7 @@ services:
       hostPort: 7000
       path: "/"
 argonaut:
-  env: production
+  env: tropical
   region: us-east-2
   cluster: production
   imageRegistry: test-cr-name # corresponding to the image that is to be deployed
